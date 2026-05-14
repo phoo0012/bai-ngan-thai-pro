@@ -1,7 +1,14 @@
 import React from 'react';
 import { X, Download, FileText } from 'lucide-react';
 
-const PreviewModal = ({ isOpen, onClose, worksheet, onDownload }) => {
+interface PreviewModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  worksheet: any;
+  onDownload: (worksheet: any) => void;
+}
+
+const PreviewModal = ({ isOpen, onClose, worksheet, onDownload }: PreviewModalProps) => {
   if (!isOpen || !worksheet) return null;
 
   return (
