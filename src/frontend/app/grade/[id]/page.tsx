@@ -9,9 +9,9 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 const GradeDashboard = () => {
   const { id } = useParams();
   const router = useRouter();
-  const [worksheets, setWorksheets] = useState([]);
+  const [worksheets, setWorksheets] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [downloadingId, setDownloadingId] = useState(null);
 
   const gradeName = id?.toString().toUpperCase();
@@ -38,7 +38,7 @@ const GradeDashboard = () => {
     if (id) fetchWorksheets();
   }, [id]);
 
-  const handleDownload = async (worksheet) => {
+  const handleDownload = async (worksheet: any) => {
     setDownloadingId(worksheet.id);
     try {
       const response = await fetch(`${API_BASE_URL}/api/generate-pdf`, {
@@ -65,7 +65,7 @@ const GradeDashboard = () => {
     }
   };
 
-  const handleViewWorksheet = (ws) => {
+  const handleViewWorksheet = (ws: any) => {
     console.log('[Dashboard] Viewing worksheet:', ws.title, 'hasImage:', !!ws.imageUrl);
     sessionStorage.setItem(`worksheet_${ws.id}`, JSON.stringify(ws));
     router.push(`/worksheet/${ws.id}`);

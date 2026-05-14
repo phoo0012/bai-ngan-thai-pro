@@ -9,7 +9,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 const WorksheetPage = () => {
   const { id } = useParams();
   const router = useRouter();
-  const [worksheet, setWorksheet] = useState(null);
+  const [worksheet, setWorksheet] = useState<any>(null);
   const [downloading, setDownloading] = useState(false);
 
   useEffect(() => {
@@ -132,7 +132,7 @@ const WorksheetPage = () => {
 
           {/* Questions */}
           <div className="flex-1 mb-6">
-            {worksheet.questions.map((q, i) => (
+            {worksheet.questions.map((q: any, i: number) => (
               <div key={i} className="mb-4 text-sm">
                 <div className="mb-1">
                   <span className="font-bold text-teal-700 mr-2">{i + 1}.</span>

@@ -56,7 +56,7 @@ const PreviewModal = ({ isOpen, onClose, worksheet, onDownload }: PreviewModalPr
 
             {/* Questions */}
             <div className="flex-1 mb-10">
-              {worksheet.questions.map((q, i) => (
+              {worksheet.questions.map((q: any, i: number) => (
                 <div key={i} className="mb-6 text-sm">
                   <div className="mb-2">
                     <span className="font-bold text-teal-700 mr-2">{i + 1}.</span>
